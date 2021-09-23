@@ -87,9 +87,11 @@ public class BreakManagement {
 
     private boolean employeePresent(PayoutBreak payoutBreak) {
         for (Employee employee : employeeStorage) {
-            if ((employee.getEmployeePresent().isAfter(payoutBreak.getValidFrom()) || employee.getEmployeePresent().isEqual(payoutBreak.getValidFrom()))
-                    && employee.getEmployeePresent().isBefore(payoutBreak.getValidTo()) || employee.getEmployeePresent().isEqual(payoutBreak.getValidTo())) {
-                return true;
+            for (LocalDate localDate : employee.getPresents()) {
+                if ((localDate.isAfter(payoutBreak.getValidFrom()) || localDate.isEqual(payoutBreak.getValidFrom()))
+                        && localDate.isBefore(payoutBreak.getValidTo()) || localDate.isEqual(payoutBreak.getValidTo())) {
+                    return true;
+                }
             }
         }
         return false;
