@@ -1,23 +1,17 @@
 package employee;
 
 import java.time.LocalDate;
+import java.util.List;
 
-public class Employee implements Comparable<Employee>{
-    private final LocalDate employeePresent;
+public class Employee {
+    private final List<LocalDate> presents;
 
-    public Employee(LocalDate employeePresent) {
-        this.employeePresent = employeePresent;
+    public Employee(List<LocalDate> presents) {
+        this.presents = presents;
     }
 
-    public LocalDate getEmployeePresent() {
-        return employeePresent;
+    public List<LocalDate> getPresents() {
+        return presents;
     }
 
-    @Override
-    public int compareTo(Employee o) {
-        if (this.employeePresent.isAfter(o.employeePresent)) {
-            return 1;
-        }
-        return -1;
-    }
 }
