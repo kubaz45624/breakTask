@@ -14,7 +14,8 @@ class BreakManagementTest {
     @Test
     void addBreak_NoEmployeePresent_True() {
         BreakManagement breakManagement = new BreakManagement(new ArrayList<>(), new ArrayList<>());
-        PayoutBreak payoutBreakToAdd = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN, LocalDate.MIN, LocalDate.of(1880, 1, 1));
+        PayoutBreak payoutBreakToAdd = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN, LocalDate.MIN,
+                LocalDate.of(1880, 1, 1));
 
         assertTrue(breakManagement.addBreak(payoutBreakToAdd));
     }
@@ -27,7 +28,8 @@ class BreakManagementTest {
 
         BreakManagement breakManagement = new BreakManagement(new ArrayList<>(), new ArrayList<>());
         breakManagement.addEmployee(employeeToAdd);
-        PayoutBreak payoutBreakToAdd = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN, LocalDate.MIN, LocalDate.of(1880, 1, 1));
+        PayoutBreak payoutBreakToAdd = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN,
+                LocalDate.MIN, LocalDate.of(1880, 1, 1));
 
         assertTrue(breakManagement.addBreak(payoutBreakToAdd));
     }
@@ -40,7 +42,8 @@ class BreakManagementTest {
 
         BreakManagement breakManagement = new BreakManagement(new ArrayList<>(), new ArrayList<>());
         breakManagement.addEmployee(employeeToAdd);
-        PayoutBreak payoutBreakToAdd = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN, LocalDate.MIN, LocalDate.of(2000, 1, 1));
+        PayoutBreak payoutBreakToAdd = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN,
+                LocalDate.MIN, LocalDate.of(2000, 1, 1));
 
         assertFalse(breakManagement.addBreak(payoutBreakToAdd));
     }
@@ -49,10 +52,12 @@ class BreakManagementTest {
     void addBreak_OthersBreakExist_True() {
         BreakManagement breakManagement = new BreakManagement(new ArrayList<>(), new ArrayList<>());
 
-        PayoutBreak payoutBreakToAdd = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN, LocalDate.MIN, LocalDate.of(2000, 1, 1));
+        PayoutBreak payoutBreakToAdd = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN,
+                LocalDate.MIN, LocalDate.of(2000, 1, 1));
         breakManagement.addBreak(payoutBreakToAdd);
 
-        PayoutBreak payoutBreakToTest= new PayoutBreak(LocalTime.of(0, 12), LocalTime.MIN, LocalDate.of(2001, 12, 17), LocalDate.of(2002, 12, 17));
+        PayoutBreak payoutBreakToTest= new PayoutBreak(LocalTime.of(0, 12), LocalTime.MIN,
+                LocalDate.of(2001, 12, 17), LocalDate.of(2002, 12, 17));
 
         assertTrue(breakManagement.addBreak(payoutBreakToTest));
     }
@@ -61,10 +66,12 @@ class BreakManagementTest {
     void addBreak_OthersBreakExist_False() {
         BreakManagement breakManagement = new BreakManagement(new ArrayList<>(), new ArrayList<>());
 
-        PayoutBreak payoutBreakToAdd = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN, LocalDate.MIN, LocalDate.of(2000, 1, 1));
+        PayoutBreak payoutBreakToAdd = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN,
+                LocalDate.MIN, LocalDate.of(2000, 1, 1));
         breakManagement.addBreak(payoutBreakToAdd);
 
-        PayoutBreak payoutBreakToTest= new PayoutBreak(LocalTime.of(0, 12), LocalTime.MIN, LocalDate.of(1990, 12, 17), LocalDate.of(2002, 12, 17));
+        PayoutBreak payoutBreakToTest= new PayoutBreak(LocalTime.of(0, 12), LocalTime.MIN,
+                LocalDate.of(1990, 12, 17), LocalDate.of(2002, 12, 17));
 
         assertFalse(breakManagement.addBreak(payoutBreakToTest));
     }
@@ -73,7 +80,8 @@ class BreakManagementTest {
     void removeBreak_NoEmployeePresent_True() {
         BreakManagement breakManagement = new BreakManagement(new ArrayList<>(), new ArrayList<>());
 
-        PayoutBreak payoutBreakToTest = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN, LocalDate.MIN, LocalDate.of(2000, 1, 1));
+        PayoutBreak payoutBreakToTest = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN,
+                LocalDate.MIN, LocalDate.of(2000, 1, 1));
         breakManagement.addBreak(payoutBreakToTest);
 
         assertTrue(breakManagement.removeBreak(payoutBreakToTest));
@@ -88,7 +96,8 @@ class BreakManagementTest {
         Employee employeeToAdd = new Employee(employeePresentList);
         breakManagement.addEmployee(employeeToAdd);
 
-        PayoutBreak payoutBreakToTest = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN, LocalDate.MIN, LocalDate.of(2000, 1, 1));
+        PayoutBreak payoutBreakToTest = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN,
+                LocalDate.MIN, LocalDate.of(2000, 1, 1));
         breakManagement.addBreak(payoutBreakToTest);
 
         assertTrue(breakManagement.removeBreak(payoutBreakToTest));
@@ -102,7 +111,8 @@ class BreakManagementTest {
         employeePresentList.add(LocalDate.of(1990, 12, 16));
         Employee employeeToAdd = new Employee(employeePresentList);
 
-        PayoutBreak payoutBreakToTest = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN, LocalDate.MIN, LocalDate.of(2000, 1, 1));
+        PayoutBreak payoutBreakToTest = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN,
+                LocalDate.MIN, LocalDate.of(2000, 1, 1));
         breakManagement.addBreak(payoutBreakToTest);
 
         breakManagement.addEmployee(employeeToAdd);
@@ -114,7 +124,8 @@ class BreakManagementTest {
     void changePayoutBreakTime_NoEmployeePresent_True() {
         BreakManagement breakManagement = new BreakManagement(new ArrayList<>(), new ArrayList<>());
 
-        PayoutBreak payoutBreakToTest = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN, LocalDate.MIN, LocalDate.of(2000, 1, 1));
+        PayoutBreak payoutBreakToTest = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN,
+                LocalDate.MIN, LocalDate.of(2000, 1, 1));
         breakManagement.addBreak(payoutBreakToTest);
 
         assertAll(
@@ -132,7 +143,8 @@ class BreakManagementTest {
         Employee employeeToAdd = new Employee(employeePresentList);
         breakManagement.addEmployee(employeeToAdd);
 
-        PayoutBreak payoutBreakToTest = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN, LocalDate.MIN, LocalDate.of(2000, 1, 1));
+        PayoutBreak payoutBreakToTest = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN,
+                LocalDate.MIN, LocalDate.of(2000, 1, 1));
         breakManagement.addBreak(payoutBreakToTest);
 
         assertAll(
@@ -149,7 +161,8 @@ class BreakManagementTest {
         employeePresentList.add(LocalDate.of(1990, 12, 16));
         Employee employeeToAdd = new Employee(employeePresentList);
 
-        PayoutBreak payoutBreakToTest = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN, LocalDate.MIN, LocalDate.of(2000, 1, 1));
+        PayoutBreak payoutBreakToTest = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN,
+                LocalDate.MIN, LocalDate.of(2000, 1, 1));
         breakManagement.addBreak(payoutBreakToTest);
 
         breakManagement.addEmployee(employeeToAdd);
@@ -161,7 +174,8 @@ class BreakManagementTest {
     void changeRequiredWorkTime_NoEmployeePresent_True() {
         BreakManagement breakManagement = new BreakManagement(new ArrayList<>(), new ArrayList<>());
 
-        PayoutBreak payoutBreakToTest = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN, LocalDate.MIN, LocalDate.of(2000, 1, 1));
+        PayoutBreak payoutBreakToTest = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN,
+                LocalDate.MIN, LocalDate.of(2000, 1, 1));
         breakManagement.addBreak(payoutBreakToTest);
 
         assertAll(
@@ -179,7 +193,8 @@ class BreakManagementTest {
         Employee employeeToAdd = new Employee(employeePresentList);
         breakManagement.addEmployee(employeeToAdd);
 
-        PayoutBreak payoutBreakToTest = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN, LocalDate.MIN, LocalDate.of(2000, 1, 1));
+        PayoutBreak payoutBreakToTest = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN,
+                LocalDate.MIN, LocalDate.of(2000, 1, 1));
         breakManagement.addBreak(payoutBreakToTest);
 
         assertAll(
@@ -196,7 +211,8 @@ class BreakManagementTest {
         employeePresentList.add(LocalDate.of(1990, 12, 16));
         Employee employeeToAdd = new Employee(employeePresentList);
 
-        PayoutBreak payoutBreakToTest = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN, LocalDate.MIN, LocalDate.of(2000, 1, 1));
+        PayoutBreak payoutBreakToTest = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN,
+                LocalDate.MIN, LocalDate.of(2000, 1, 1));
         breakManagement.addBreak(payoutBreakToTest);
 
         breakManagement.addEmployee(employeeToAdd);
@@ -207,11 +223,13 @@ class BreakManagementTest {
     @Test
     void breakTimeReduction_NoEmployeePresent_True() {
         BreakManagement breakManagement = new BreakManagement(new ArrayList<>(), new ArrayList<>());
-        PayoutBreak payoutBreakToTest = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN, LocalDate.of(1990, 1, 1), LocalDate.of(2000, 1, 1));
+        PayoutBreak payoutBreakToTest = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN,
+                LocalDate.of(1990, 1, 1), LocalDate.of(2000, 1, 1));
         breakManagement.addBreak(payoutBreakToTest);
 
         assertAll(
-                () -> assertTrue(breakManagement.breakTimeReduction(LocalDate.of(1990, 1, 1), LocalDate.of(1999, 1, 1), 0)),
+                () -> assertTrue(breakManagement.breakTimeReduction(LocalDate.of(1990, 1, 1),
+                        LocalDate.of(1999, 1, 1), 0)),
                 () -> assertEquals(LocalDate.of(1990, 1, 1), breakManagement.getBreakStorage().get(0).getValidFrom()),
                 () -> assertEquals(LocalDate.of(1999, 1, 1), breakManagement.getBreakStorage().get(0).getValidTo())
         );
@@ -220,7 +238,8 @@ class BreakManagementTest {
     @Test
     void breakTimeReduction_EmployeePresent_True() {
         BreakManagement breakManagement = new BreakManagement(new ArrayList<>(), new ArrayList<>());
-        PayoutBreak payoutBreakToTest = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN, LocalDate.of(1990, 1, 1), LocalDate.of(2000, 1, 1));
+        PayoutBreak payoutBreakToTest = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN,
+                LocalDate.of(1990, 1, 1), LocalDate.of(2000, 1, 1));
         breakManagement.addBreak(payoutBreakToTest);
 
         List<LocalDate> employeePresentList = new ArrayList<>();
@@ -229,7 +248,8 @@ class BreakManagementTest {
         breakManagement.addEmployee(employeeToAdd);
 
         assertAll(
-                () -> assertTrue(breakManagement.breakTimeReduction(LocalDate.of(1990, 1, 1), LocalDate.of(1999, 1, 1), 0)),
+                () -> assertTrue(breakManagement.breakTimeReduction(LocalDate.of(1990, 1, 1),
+                        LocalDate.of(1999, 1, 1), 0)),
                 () -> assertEquals(LocalDate.of(1990, 1, 1), breakManagement.getBreakStorage().get(0).getValidFrom()),
                 () -> assertEquals(LocalDate.of(1999, 1, 1), breakManagement.getBreakStorage().get(0).getValidTo())
         );
@@ -238,7 +258,8 @@ class BreakManagementTest {
     @Test
     void breakTimeReduction_EmployeePresent_False() {
         BreakManagement breakManagement = new BreakManagement(new ArrayList<>(), new ArrayList<>());
-        PayoutBreak payoutBreakToTest = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN, LocalDate.of(1990, 1, 1), LocalDate.of(2001, 1, 1));
+        PayoutBreak payoutBreakToTest = new PayoutBreak(LocalTime.of(0, 11), LocalTime.MIN,
+                LocalDate.of(1990, 1, 1), LocalDate.of(2001, 1, 1));
         breakManagement.addBreak(payoutBreakToTest);
 
         List<LocalDate> employeePresentList = new ArrayList<>();
@@ -247,6 +268,7 @@ class BreakManagementTest {
         breakManagement.addEmployee(employeeToAdd);
 
 
-        assertFalse(breakManagement.breakTimeReduction(LocalDate.of(1990, 1, 1), LocalDate.of(1999, 1, 1), 0));
+        assertFalse(breakManagement.breakTimeReduction(LocalDate.of(1990, 1, 1),
+                LocalDate.of(1999, 1, 1), 0));
     }
 }
