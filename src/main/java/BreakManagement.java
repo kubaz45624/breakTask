@@ -56,6 +56,10 @@ public class BreakManagement {
     }
 
     public boolean breakTimeReduction(LocalDate newStart, LocalDate newEnd, int breakIndex) {
+        if (newStart.isBefore(breakStorage.get(breakIndex).getValidFrom())
+                || newEnd.isAfter(breakStorage.get(breakIndex).getValidTo())) {
+            return false;
+        }
         if (employeePresent(breakStorage.get(breakIndex))) {
             return false;
         }
